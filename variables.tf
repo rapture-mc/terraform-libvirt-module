@@ -34,7 +34,6 @@ variable "additional_disk_ids" {
   default     = []
 }
 
-
 variable "autostart" {
   description = "Autostart the domain"
   type        = bool
@@ -54,7 +53,7 @@ variable "vm_count" {
 }
 
 variable "index_start" {
-  description = "From where the indexig start"
+  description = "From where the indexing start"
   type        = number
   default     = 1
 }
