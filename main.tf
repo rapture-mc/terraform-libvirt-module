@@ -9,9 +9,10 @@ terraform {
 }
 
 resource "libvirt_domain" "virt-machine" {
-  count  = var.vm_count
-  name   = format("${var.vm_hostname_prefix}%02d", count.index + var.index_start)
-  memory = var.memory
+  count   = var.vm_count
+  name    = format("${var.vm_hostname_prefix}%02d", count.index + var.index_start)
+  running = var.running
+  memory  = var.memory
   cpu {
     mode = var.cpu_mode
   }

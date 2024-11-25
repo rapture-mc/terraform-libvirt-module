@@ -52,6 +52,12 @@ variable "vm_count" {
   default     = 1
 }
 
+variable "running" {
+  description = "Whether the machine is running"
+  type        = bool
+  default     = true
+}
+
 variable "index_start" {
   description = "From where the indexing start"
   type        = number
