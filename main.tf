@@ -18,7 +18,7 @@ resource "libvirt_domain" "virt-machine" {
   }
   vcpu       = var.vcpu
   autostart  = var.autostart
-  firmware   = var.firmware
+  firmware   = var.uefi_enabled ? var.firmware : null
 
   network_interface {
     bridge         = var.bridge

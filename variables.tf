@@ -40,6 +40,12 @@ variable "autostart" {
   default     = true
 }
 
+variable "uefi_enabled" {
+  description = "Whether to use UEFI"
+  type        = bool
+  default     = true
+}
+
 variable "firmware" {
   description = "Path to the OVMF firmware file for UEFI"
   type        = string
