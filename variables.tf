@@ -99,6 +99,16 @@ variable "xml_override" {
       vendor  = string
       product = string
     }))
+    pci_devices_passthrough = list(object({
+      src_domain = string
+      src_bus    = string
+      src_slot   = string
+      src_func   = string
+      dst_domain = string
+      dst_bus    = string
+      dst_slot   = string
+      dst_func   = string
+    }))
   })
   default = {
 
@@ -115,9 +125,20 @@ variable "xml_override" {
       #   vendor = "0x0123",
       #   product = "0xabcd"
       # }
+    ],
+    pci_devices_passthrough = [
+      #{
+      #  src_domain = "0x0000",
+      #  src_bus = "0xc1",
+      #  src_slot = "0x00",
+      #  src_func = "0x0",
+      #  dst_domain = "0x0000",
+      #  dst_bus = "0x00",
+      #  dst_slot = "0x08"
+      #  dst_func = "0x0"
+      #}
     ]
   }
-
 }
 
 variable "vcpu" {
