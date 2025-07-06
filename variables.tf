@@ -152,3 +152,57 @@ variable "share_filesystem" {
     mode     = null
   }
 }
+
+variable "xml_override" {
+  description = "With these variables you can: Enable hugepages; Set USB controllers; Attach USB devices"
+  type = object({
+    hugepages = bool
+    usb_controllers = list(object({
+      model = string
+    }))
+    usb_devices = list(object({
+      vendor  = string
+      product = string
+    }))
+    pci_devices_passthrough = list(object({
+      src_domain = string
+      src_bus    = string
+      src_slot   = string
+      src_func   = string
+      dst_domain = string
+      dst_bus    = string
+      dst_slot   = string
+      dst_func   = string
+    }))
+  })
+  default = {
+
+    hugepages = false,
+
+    usb_controllers = [
+      {
+        model = "piix3-uhci"
+      }
+    ],
+
+    usb_devices = [
+      # {
+      #   vendor = "0x0123",
+      #   product = "0xabcd"
+      # }
+    ],
+    pci_devices_passthrough = [
+      #{
+      #  src_domain = "0x0000",
+      #  src_bus = "0xc1",
+      #  src_slot = "0x00",
+      #  src_func = "0x0",
+      #  dst_domain = "0x0000",
+      #  dst_bus = "0x00",
+      #  dst_slot = "0x08"
+      #  dst_func = "0x0"
+      #}
+    ]
+  }
+
+}

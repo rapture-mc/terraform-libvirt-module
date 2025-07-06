@@ -44,6 +44,10 @@ resource "libvirt_domain" "virt-machine" {
     autoport    = true
   }
 
+  xml {
+    xslt = templatefile("${path.module}/xslt/template.tftpl", var.xml_override)
+  }
+
   disk {
     volume_id = element(libvirt_volume.volume-qcow2[*].id, count.index)
   }
